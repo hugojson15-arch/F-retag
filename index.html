@@ -109,6 +109,11 @@
         </article>
       </div>
       <p class="menu-footnote">Priser och rätter kan variera. Fråga oss gärna om dagens meny och allergener.</p>
+
+      <div class="menu-buttons">
+        <button type="button" class="btn btn-primary" id="open-alacarte">Se hela menyn (à la carte)</button>
+        <button type="button" class="btn btn-ghost" id="open-takeaway">Se takeaway-menyn</button>
+      </div>
     </div>
   </section>
 
@@ -186,6 +191,263 @@
   </section>
 
 </main>
+
+<!-- Shared dish list, cloned into both menu popups by js/main.js -->
+<template id="menu-content-template">
+
+  <section class="menu-cat">
+    <h3>Kött &amp; Fisk</h3>
+    <h4>Förrätt</h4>
+    <ul class="dish-list">
+      <li>Ostgratinerat vitlöksbröd med aioli</li>
+      <li>Toast Skagen med Kalixlöjrom</li>
+    </ul>
+    <h4>Varmrätt</h4>
+    <ul class="dish-list">
+      <li>Caesarsallad med kycklingfilé, bacon och krutonger</li>
+      <li>Smörstekt röding med brynt smör, sparris, gräddbakad potatis och citron</li>
+      <li>Lammytterfilé med bakade rödbetor, chèvregratinerad potatis och rödvinssås</li>
+      <li>Ryggbiff med tomatsallad, rödvinssås, béarnaisesås och pommes frites</li>
+      <li>Pepparstek med gröna bönor, serverad med potatisgratäng</li>
+    </ul>
+    <h4>Dessert</h4>
+    <ul class="dish-list">
+      <li>Vitchokladparfait med hallonsås</li>
+      <li>Crème brûlée med vaniljglass och hjortron</li>
+      <li>En kula mango- eller hallonsorbet</li>
+    </ul>
+  </section>
+
+  <section class="menu-cat">
+    <h3>Kinesiskt</h3>
+    <h4>Förrätter</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>30</b> Vårrulle</li>
+      <li><b>31</b> Majssoppa med kyckling och krabbstavar</li>
+      <li><b>32</b> Won ton-soppa – fisk- och skaldjursfyllda won tons</li>
+      <li><b>34</b> Kycklingsoppa med champinjoner</li>
+      <li><b>35</b> Kycklingsoppa med lök och vitlök</li>
+    </ul>
+    <h4>Specialrätter</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>0</b> Fyra små rätter för en person – friterad scampi med sötsursås, stekt biff med lök, friterat fläsk med sötsursås, stekt kyckling i currysås <span class="spicy">Stark</span></li>
+      <li><b>01</b> Tre små rätter för en person – friterad scampi med sötsursås, Szechuan biff med tomat, stekt kyckling med cashewnötter</li>
+      <li><b>02</b> Friterade revbensspjäll i sötsursås</li>
+      <li><b>03</b> Friterade revbensspjäll med paprika och svarta bönor <span class="spicy">Stark</span></li>
+      <li><b>04</b> Stekt scampi i tomat och vitlökssås</li>
+      <li><b>05</b> Smör- och vitlöksstekt scampi på lökbädd</li>
+      <li><b>06</b> Friterade scampi med sötsursås</li>
+      <li><b>07</b> Wokad bläckfisk, räkor och fisk (friterad) med apelsinsås</li>
+      <li><b>09</b> Stekt bläckfisk med grönsaker i sötsursås</li>
+      <li><b>010</b> Chili scampi <span class="spicy">Stark</span></li>
+      <li><b>011</b> Stekta scampi och kyckling i satesås</li>
+      <li><b>013</b> Waldorf chop-suey – fläskfilé, biff, kyckling, bläckfisk, fisk <span class="spicy">Stark</span></li>
+      <li><b>014</b> Grillat räkspett i szechuansås <span class="spicy">Stark</span></li>
+      <li><b>015</b> Tre friterade ingredienser – räkor, bläckfisk, krabbfilé</li>
+      <li><b>016</b> Tandoori biff med lök och champinjoner <span class="spicy">Stark</span></li>
+      <li><b>017</b> Chicken Sambal <span class="spicy">Stark</span></li>
+      <li><b>018</b> Scampi i löksås, curry och koriander <span class="spicy">Stark</span></li>
+    </ul>
+    <h4>Trerätters middagar</h4>
+    <ul class="dish-list combo-list">
+      <li><b>A.</b> För en person — Förrätt: kycklingsoppa med champinjoner eller vårrulle. Varmrätt: stekt biff med lök. Dessert: friterade bananer med glass och kaffe.</li>
+      <li><b>B.</b> För två personer — Förrätt: kycklingsoppa med champinjoner eller vårrulle. Varmrätt: Szechuan biff (stark), friterad kyckling med sötsursås. Dessert: friterade bananer med glass och kaffe.</li>
+      <li><b>C.</b> För tre personer — Förrätt: kycklingsoppa med champinjoner eller vårrulle. Varmrätt: friterade scampi med sötsursås, stekt fläskfilé med blandade grönsaker, Szechuan kyckling (stark). Dessert: friterade bananer med glass och kaffe.</li>
+      <li><b>D.</b> För fyra personer — Förrätt: kycklingsoppa med champinjoner eller vårrulle. Varmrätt: friterad anka med sötsursås, stekt kyckling med cashewnötter, friterade scampi med sötsursås, Szechuan biff (stark). Dessert: friterade bananer med glass och kaffe.</li>
+    </ul>
+
+    <h4>Kyckling</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>40</b> Stekt kyckling med cashewnötter</li>
+      <li><b>41</b> Stekt kyckling med ananas</li>
+      <li><b>42</b> Stekt kyckling i currysås <span class="spicy">Stark</span></li>
+      <li><b>43</b> Friterad kyckling med tomat- och vitlökssås <span class="spicy">Stark</span></li>
+      <li><b>44</b> Stekt kyckling med bambuskott och champinjoner</li>
+      <li><b>45</b> Friterad kyckling med sötsursås eller currysås</li>
+      <li><b>46</b> Kyckling chop-suey</li>
+      <li><b>47</b> Szechuan kyckling <span class="spicy">Stark</span></li>
+      <li><b>48</b> Chili kyckling <span class="spicy">Stark</span></li>
+      <li><b>49</b> Hoisin kyckling</li>
+    </ul>
+
+    <h4>Anka</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>50</b> Stekt anka med ananas</li>
+      <li><b>51</b> Szechuan anka <span class="spicy">Stark</span></li>
+      <li><b>52</b> Stekt anka med shiitakesvamp</li>
+      <li><b>53</b> Friterad anka med sötsursås</li>
+      <li><b>54</b> Hoisin anka</li>
+    </ul>
+
+    <h4>Biff</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>60</b> Stekt biff med kinesiska grönsaker <span class="spicy">Stark</span></li>
+      <li><b>61</b> Stekt biff i currysås <span class="spicy">Stark</span></li>
+      <li><b>62</b> Stekt biff med lök</li>
+      <li><b>63</b> Stekt biff med purjolök</li>
+      <li><b>64</b> Friterad biff med vitlök och tomatsås</li>
+      <li><b>65</b> Stekt biff med paprika och svarta bönor <span class="spicy">Stark</span></li>
+      <li><b>66</b> Biff chop-suey</li>
+      <li><b>67</b> Stekt biff med ananas</li>
+      <li><b>68</b> Stekt biff med broccoli i ostronsås</li>
+      <li><b>69</b> Szechuan biff <span class="spicy">Stark</span></li>
+      <li><b>70</b> Stekt biff med bambuskott och champinjoner</li>
+    </ul>
+
+    <h4>Fläsk</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>80</b> Friterat fläsk med sötsursås</li>
+      <li><b>81</b> Stekt fläskfilé med bambuskott och champinjoner</li>
+      <li><b>82</b> Stekt fläskfilé med paprika och svarta bönor <span class="spicy">Stark</span></li>
+      <li><b>83</b> Stekt fläskfilé i currysås <span class="spicy">Stark</span></li>
+      <li><b>84</b> Fläskfilé chop-suey</li>
+    </ul>
+
+    <h4>Scampi</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>91</b> Stekt scampi med paprika och svarta bönor <span class="spicy">Stark</span></li>
+      <li><b>92</b> Stekt scampi i ostronsås</li>
+      <li><b>93</b> Stekt scampi i currysås <span class="spicy">Stark</span></li>
+      <li><b>94</b> Stekt scampi med cashewnötter</li>
+      <li><b>95</b> Tandoori scampi med lök och champinjoner <span class="spicy">Stark</span></li>
+      <li><b>96</b> Scampi med ingefära, vitlök, färsk chili och vårlök <span class="spicy">Stark</span></li>
+    </ul>
+
+    <h4>Fisk</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>101</b> Friterad bläckfisk med sötsursås eller soyasås</li>
+      <li><b>102</b> Friterad fisk med tomat- och vitlökssås</li>
+      <li><b>103</b> Friterad fisk med sötsursås</li>
+      <li><b>104</b> Friterad fisk med blandade grönsaker</li>
+    </ul>
+
+    <h4>Ris och nudlar</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>110</b> Stekt ris med kyckling eller räkor</li>
+      <li><b>111</b> Nasi goreng – skinka, kyckling, räkor <span class="spicy">Stark</span></li>
+      <li><b>112</b> Stekt ris special – skinka, kyckling, räkor</li>
+      <li><b>113</b> Stekta nudlar med kyckling</li>
+      <li><b>114</b> Stekta nudlar med räkor</li>
+      <li><b>115</b> Stekta nudlar special – skinka, kyckling, räkor</li>
+      <li><b>117</b> Nudelsoppa med won ton och kyckling</li>
+    </ul>
+
+    <h4>Vegetariskt</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>119</b> Stekta blandade grönsaker</li>
+      <li><b>120</b> Stekta blandade grönsaker i sötsursås</li>
+      <li><b>121</b> Stekta blandade grönsaker i currysås <span class="spicy">Stark</span></li>
+      <li><b>122</b> Stekta blandade grönsaker i szechuansås <span class="spicy">Stark</span></li>
+      <li><b>123</b> Stekta nudlar med grönsaker</li>
+      <li><b>124</b> Stekt ris med grönsaker</li>
+    </ul>
+    <p class="menu-note-inline">Obs! De vegetariska rätterna kan innehålla cashewnötter.</p>
+
+    <h4>Barnmeny</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>140</b> Hamburgare med pommes frites</li>
+      <li><b>141</b> Wienerkorv med pommes frites</li>
+      <li><b>142</b> Friterad kyckling med pommes frites</li>
+      <li><b>143</b> Köttbullar med pommes frites</li>
+      <li><b>144</b> Barnpizza – tomat, ost, skinka</li>
+      <li><b>145</b> Pasta penne med köttfärssås</li>
+      <li><b>146</b> Stekt kyckling med ris</li>
+    </ul>
+
+    <h4>Dessert</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>130</b> Glass med dip</li>
+      <li><b>131</b> Glass med chokladsås</li>
+      <li><b>134</b> Glass med friterade bananer</li>
+    </ul>
+  </section>
+
+  <section class="menu-cat">
+    <h3>Japanskt</h3>
+    <h4>Förrätter</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>J2</b> Ebi kushiyaki – grillade räkor på spett</li>
+      <li><b>J3</b> Yakitori – grillade kycklingklubbor på spett</li>
+    </ul>
+    <h4>Varmrätter</h4>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>J9</b> Stekt biff med yakinikusås</li>
+      <li><b>J10</b> Stekt kycklingfilé med yakinikusås</li>
+      <li><b>J11</b> Fisk- och skaldjursspett</li>
+      <li><b>J14</b> Tempura kungsräkor – friterade kungsräkor och grönsaker</li>
+      <li><b>J15</b> Tempura vegetariskt – friterad squash, aubergine, lök och paprika</li>
+      <li><b>J16</b> Yakitori – grillat kycklingspett på gräskoksbädd</li>
+      <li><b>J17</b> Soja- och misomarinerad lax med picklad schalottenlök</li>
+      <li><b>J18</b> Waldorf's Bento – yakiniku-biff, teriyakikyckling och kycklingfilé med yakinikusås</li>
+    </ul>
+  </section>
+
+  <section class="menu-cat">
+    <h3>Pizza</h3>
+    <ul class="dish-list dish-list-numbered">
+      <li><b>1</b> Vesuvo – skinka</li>
+      <li><b>2</b> Delopera – skinka, tonfisk</li>
+      <li><b>3</b> LaBussola – skinka, oliv, tonfisk</li>
+      <li><b>4</b> Cacciatore – champinjoner, salami</li>
+      <li><b>5</b> Marinara – skinka, musslor</li>
+      <li><b>6</b> Capricciosa – skinka, champinjoner</li>
+      <li><b>7</b> Artista – skinka, ägg</li>
+      <li><b>8</b> Siciliana – skinka, ansjovis</li>
+      <li><b>10</b> Calzone – inbakad, skinka</li>
+      <li><b>12</b> Pepperona – paprika, salami, oliv</li>
+      <li><b>12</b> Vegetariana – lök, champinjoner, oliver, paprika, kronärtskocka</li>
+      <li><b>14</b> Mamma Mia – skinka, lök, paprika, champinjoner</li>
+      <li><b>16</b> Romana – lök, bacon</li>
+      <li><b>18</b> Orientale – lök, köttfärs</li>
+      <li><b>20</b> Bananpizza – skinka, banan, curry</li>
+      <li><b>21</b> Americana – kycklingfärs, ananas, curry</li>
+      <li><b>22</b> Brittania – bacon, ölkorv</li>
+      <li><b>23</b> Waldorf special – friterat, lite av allt möjligt</li>
+      <li><b>24</b> Quattro Stagioni – skinka, räkor, champinjoner, musslor</li>
+      <li><b>26</b> Gorgonzola – skinka, champinjoner, gorgonzolaost, färsk tomat</li>
+      <li><b>28</b> Napolietana – ansjovis, kapris, oliver</li>
+      <li><b>33</b> Husets special – gratinerad ost, skinka, champinjoner, lök, salami</li>
+      <li><b>34</b> Francescana – skinka, champinjoner, oliv</li>
+      <li><b>35</b> Roman special – skinka, champinjoner, oliver, salami, lök, ägg/mozzarella</li>
+      <li><b>G1</b> Vegetarisk – squash, lök, aubergine, paprika, champinjoner, tomatsås</li>
+      <li><b>G2</b> Ciacciao – vildmarinerad fläskfilé, purjolök, squash, ostfyllning</li>
+      <li><b>G4</b> LaGondola – lök, färska tomater, vildmarinerad oliv, mozzarella, béarnaisesås</li>
+      <li><b>G6</b> Mexicana – lök, kebabkött, jalapeño, ostfyllning</li>
+      <li><b>G7</b> Kebabpizza – lök, kebabkött, pepparsås, ostfyllning</li>
+    </ul>
+    <p class="menu-note-inline">Extra ingredienser från 6:-</p>
+  </section>
+
+</template>
+
+<!-- À LA CARTE MODAL -->
+<div class="modal-overlay" id="modal-alacarte" hidden>
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="alacarte-title">
+    <div class="modal-header">
+      <div>
+        <h2 id="alacarte-title">À la carte</h2>
+        <p class="modal-intro">Kinesiskt och japanskt serveras måndag–söndag. Kött &amp; fisk samt pizza serveras onsdag–söndag.</p>
+      </div>
+      <button type="button" class="modal-close" data-close-modal aria-label="Stäng menyn">&times;</button>
+    </div>
+    <div class="modal-body" id="alacarte-body"></div>
+  </div>
+</div>
+
+<!-- TAKEAWAY MODAL -->
+<div class="modal-overlay" id="modal-takeaway" hidden>
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="takeaway-title">
+    <div class="modal-header">
+      <div>
+        <h2 id="takeaway-title">Takeaway</h2>
+        <p class="modal-intro">Beställ mat och ta med hem från vår take away-meny måndag–fredag från 16.00, samt lördagar och söndagar. Pizzaköket stänger 20.00 alla dagar. Begränsad meny (endast kinesiskt och japanskt) på måndagar och tisdagar.</p>
+        <a href="tel:+46920222616" class="btn btn-primary btn-sm">Beställ – ring 0920-222616</a>
+      </div>
+      <button type="button" class="modal-close" data-close-modal aria-label="Stäng menyn">&times;</button>
+    </div>
+    <div class="modal-body" id="takeaway-body"></div>
+  </div>
+</div>
 
 <footer class="site-footer">
   <div class="container footer-inner">
