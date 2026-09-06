@@ -521,9 +521,13 @@ body.modal-open{ overflow:hidden; }
   padding:7px 0;
   border-bottom:1px dashed rgba(35,26,21,0.08);
   font-size:.95rem;
+  font-family:var(--font-display);
   color:var(--ink-600);
 }
 .dish-list li:last-child{ border-bottom:none; }
+.dish-list:not(.dish-list-numbered):not(.combo-list) li{
+  font-weight:700;
+}
 .dish-list-numbered li b{
   color:var(--red-700);
   font-family:var(--font-display);
