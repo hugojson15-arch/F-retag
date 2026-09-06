@@ -152,8 +152,17 @@
         </div>
         <div class="contact-card">
           <h3>Boka bord online</h3>
-          <p>Boka enkelt bord via vår bokningspartner.</p>
-          <a href="https://www.bokabord.se/restaurang/restaurang-waldorf" class="btn btn-ghost-light" target="_blank" rel="noopener">Boka bord online</a>
+          <p>Boka enkelt bord direkt via easyTable.</p>
+          <!--
+            BYT UT "waldorf-lulea" MOT ERT RIKTIGA EASYTABLE-ID.
+            Ni hittar det i er easyTable-adminpanel under
+            Inställningar → Widget/Integration (URL:en ser ut som
+            https://book.easytable.com/book/<ERT-ID>).
+          -->
+          <a href="https://book.easytable.com/book/waldorf-lulea"
+             class="btn btn-ghost-light easytable-widget"
+             data-easytable-restaurant="waldorf-lulea"
+             target="_blank" rel="noopener">Boka bord online</a>
         </div>
         <div class="contact-card">
           <h3>Hitta hit</h3>
@@ -189,5 +198,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="https://book.easytable.com/book/widget/v3/book.js" async></script>
 </body>
 </html>
