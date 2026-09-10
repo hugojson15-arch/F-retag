@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["claude/waldorf-restaurant-website-tajopw"]
+    branches: ["claude/lohinivas-auto-website-3x2v9f"]
   workflow_dispatch:
 
 permissions:
